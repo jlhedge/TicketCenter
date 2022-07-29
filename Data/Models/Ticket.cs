@@ -7,8 +7,7 @@ namespace TicketCenter.Data.Models;
 public class Ticket
 {
     [Key]
-    public Guid TicketId { get; set; } = new Guid();
-    public Guid ApplicationId { get; set; }
+    public Guid TicketId { get; set; } = Guid.NewGuid();
     public Guid SectionId { get; set; }
     public DateTime CreatedOnUtc { get; set; }
     public string? CreatedByLogon { get; set; }
@@ -16,4 +15,5 @@ public class Ticket
     public string Email { get; set; } = default!;
 
     public List<TicketInteraction> TicketInteractions { get; set; } = new List<TicketInteraction>();
+    public Section Section { get; set; }
 }
