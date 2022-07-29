@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TicketCenter.Data.Models;
 
+[Table("Section", Schema = "TicketCenter")]
 public class Section{
 
     [Key]
@@ -34,5 +35,5 @@ public class Section{
     public DateTime UpdatedOnUtc { get; set; }
 
     public List<Ticket> Tickets { get; set; }
-    public Application Application { get; set; }
+    public App Application { get; set; }
 }

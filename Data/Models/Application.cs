@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TicketCenter.Data.Models;
 
-public class Application{
+[Table("Application", Schema = "TicketCenter")]
+public class App{
 
     [Key]
     public Guid Id { get; set; } = Guid.NewGuid();

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TicketCenter.Data.Models;
 
-[Table("Tickets", Schema="Tickets")]
+[Table("Tickets", Schema="TicketCenter")]
 public class Ticket
 {
     [Key]
@@ -14,6 +14,6 @@ public class Ticket
     [EmailAddress]
     public string Email { get; set; } = default!;
 
-    public List<TicketInteraction> TicketInteractions { get; set; } = new List<TicketInteraction>();
+    public List<TicketInteraction> TicketInteractions { get; set; }
     public Section Section { get; set; }
 }

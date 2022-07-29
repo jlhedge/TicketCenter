@@ -7,10 +7,10 @@ public class TicketCenterDbContext : DbContext
 {
     public DbSet<Ticket> Tickets { get; set; }
     public DbSet<TicketInteraction> TicketInteractions { get; set; }
-    public DbSet<Application> Applications { get; set; }
+    public DbSet<App> Applications { get; set; }
     public DbSet<Section> Sections { get; set; }
 
-    public TicketCenterDbContext() : base()
+    public TicketCenterDbContext(DbContextOptions<TicketCenterDbContext> options) : base(options)
     {
 
     } 
@@ -22,12 +22,18 @@ public class TicketCenterDbContext : DbContext
                 .HasName("PK_Ticket_TicketId");
         });
 
-        modelBuilder.Entity<Ticket>(entity => {
-            entity.HasMany(i => i.TicketInteractions)
-                .WithOne(i => i.Ticket)
+        modelBuilder.Entity<TicketInteraction>(entity => {
+            entity.HasKey(i => new {
+                i.TicketId, 
+                i.CreatedOnUtc
+            });
+        });
+
+        modelBuilder.Entity<TicketInteraction>(entity => {
+            entity.HasOne(i => i.Ticket)
+                .WithMany(i => i.TicketInteractions)
                 .HasForeignKey(i => i.TicketId)
-                .HasPrincipalKey(i => i.TicketId)
-                .HasConstraintName("FK_Ticket_TicketInteraction_TicketId");
+                .HasConstraintName("FK_TicketInteraction_Ticket_TicketId");
         });
 
         modelBuilder.Entity<Ticket>(entity => {
@@ -51,16 +57,9 @@ public class TicketCenterDbContext : DbContext
             .HasName("PK_Section_Id");
         });
 
-        modelBuilder.Entity<Application>(entity => {
+        modelBuilder.Entity<App>(entity => {
             entity.HasKey(i => i.Id)
             .HasName("PK_Application_Id");
-        });
-
-        modelBuilder.Entity<TicketInteraction>(entity => {
-            entity.HasIndex(i => new {
-                i.TicketId, 
-                i.CreatedOnUtc
-            }).IsClustered(true);
         });
 
     }

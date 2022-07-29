@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace TicketCenter.Data.Models;
 
-[Table("TicketInteractions", Schema="Tickets")]
+[Table("TicketInteractions", Schema="TicketCenter")]
 public class TicketInteraction
 {
     public Guid TicketId { get; set; }
@@ -15,5 +15,5 @@ public class TicketInteraction
     public string? Notes { get; set; }
 
     [JsonIgnore]
-    public Ticket Ticket { get; set; }
+    public Ticket Ticket { get; set; } = new Ticket();
 }
