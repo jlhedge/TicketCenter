@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TicketCenter.Controllers;
 
 [ApiController]
+[Route("[Controller]/[Action]")]
 public class ApplicationController : ControllerBase
 {
     IApplicationService _svc;
