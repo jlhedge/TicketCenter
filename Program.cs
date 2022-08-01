@@ -1,5 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using TicketCenter.Data;
+using TicketCenter.Interfaces.ApplicationAdmin;
+using TicketCenter.Interfaces.TicketCenter;
+using TicketCenter.Interfaces.TicketCenterAdmin; 
+using TicketCenter.Services.ApplicationAdmin;
+using TicketCenter.Services.TicketCenter;
+using TicketCenter.Services.TicketCenterAdmin;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -11,6 +17,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TicketCenterDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("SQLConn")));
+builder.Services.AddScoped<IApplicationService,ApplicationService>();
+builder.Services.AddScoped<IPageService,PageService>();
+builder.Services.AddScoped<ISectionService,SectionService>();
+builder.Services.AddScoped<ISubsectionService,SubSectionService>();
+builder.Services.AddScoped<ITicketInteractionService,TicketInteractionService>();
+builder.Services.AddScoped<ITicketService,TicketService>();
+builder.Services.AddScoped<IRequestTypeService,RequestTypeService>();
+builder.Services.AddScoped<IStatusTypeService,StatusTypeService>();
 
 var app = builder.Build();
 
