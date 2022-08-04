@@ -1,17 +1,16 @@
 using TicketCenter.Data.Models.TicketCenterAdmin;
 using TicketCenter.Data;
 using TicketCenter.Interfaces.TicketCenterAdmin;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using TicketCenter.DataModels.TicketCenterAdmin;
+using TicketCenter.DataModels.TicketCenterAdmin.StatusType;
 
 namespace TicketCenter.Services.TicketCenterAdmin;
 
 public class StatusTypeService : IStatusTypeService
 {
-    TicketCenterDbContext _dbContext;
+    dbContext _dbContext;
 
-    public StatusTypeService(TicketCenterDbContext dbContext)
+    public StatusTypeService(dbContext dbContext)
     {
         _dbContext = dbContext;
     }

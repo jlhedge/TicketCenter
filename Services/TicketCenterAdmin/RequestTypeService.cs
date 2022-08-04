@@ -1,18 +1,16 @@
-using TicketCenter.Data.Models;
 using TicketCenter.Data;
 using TicketCenter.Interfaces.TicketCenterAdmin;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using TicketCenter.DataModels.TicketCenterAdmin;
 using TicketCenter.Data.Models.TicketCenterAdmin;
+using TicketCenter.DataModels.TicketCenterAdmin.RequestType;
 
 namespace TicketCenter.Services.TicketCenterAdmin;
 
 public class RequestTypeService : IRequestTypeService
 {
-    TicketCenterDbContext _dbContext;
+    dbContext _dbContext;
 
-    public RequestTypeService(TicketCenterDbContext dbContext)
+    public RequestTypeService(dbContext dbContext)
     {
         _dbContext = dbContext;
     }

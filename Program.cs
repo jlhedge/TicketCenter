@@ -16,7 +16,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<TicketCenterDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("SQLConn")));
+builder.Services.AddDbContext<dbContext>(options => options.UseSqlServer(configuration.GetConnectionString("TicketCenter")));
 builder.Services.AddScoped<IApplicationService,ApplicationService>();
 builder.Services.AddScoped<IPageService,PageService>();
 builder.Services.AddScoped<ISectionService,SectionService>();

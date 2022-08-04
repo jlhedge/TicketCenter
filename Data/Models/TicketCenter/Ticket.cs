@@ -9,8 +9,8 @@ namespace TicketCenter.Data.Models.TicketCenter;
 public class Ticket : Logging
 {
     [Key]
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public long StatusId { get; set; }
+    public Guid TicketId { get; set; } = Guid.NewGuid();
+    public long StatusTypeId { get; set; }
     [EmailAddress]
     public string Email { get; set; } = default!;
 

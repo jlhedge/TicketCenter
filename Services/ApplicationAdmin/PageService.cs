@@ -1,23 +1,21 @@
-using TicketCenter.Data.Models;
 using TicketCenter.Data;
 using TicketCenter.Interfaces.ApplicationAdmin;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using TicketCenter.DataModels.ApplicationAdmin;
 using TicketCenter.Data.Models.ApplicationAdmin;
+using TicketCenter.DataModels.ApplicationAdmin.Page;
 
 namespace TicketCenter.Services.ApplicationAdmin;
 
 public class PageService : IPageService
 {
-    TicketCenterDbContext _dbContext;
+    dbContext _dbContext;
 
-    public PageService(TicketCenterDbContext dbContext)
+    public PageService(dbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public Task<ActionResult<App>> Create(PostAppRequest request, CancellationToken xl)
+    public Task<ActionResult<App>> Create(PostPageRequest request, CancellationToken xl)
     {
         throw new NotImplementedException();
     }

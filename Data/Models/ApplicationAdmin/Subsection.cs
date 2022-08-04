@@ -5,11 +5,11 @@ using TicketCenter.Data.Models.Extensions;
 
 namespace TicketCenter.Data.Models.ApplicationAdmin;
 
-[Table("SubSections", Schema = "dbo")]
+[Table("SubSections", Schema = "ApplicationAdmin")]
 public class Subsection : Logging{
 
     [Key]
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid SubsectionId { get; set; } = Guid.NewGuid();
     
     public Guid SectionId { get; set; }
 

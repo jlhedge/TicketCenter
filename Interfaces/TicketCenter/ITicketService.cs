@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using TicketCenter.Data.Models.TicketCenter;
-using TicketCenter.DataModels.TicketCenter;
+using TicketCenter.DataModels.TicketCenter.Ticket;
 
 namespace TicketCenter.Interfaces.TicketCenter;
 
 public interface ITicketService
 {
-    Task<List<TicketInteraction>> GetAll();
-    Task<List<TicketInteraction>> GetByTicketId(long TicketId);
-    Task<TicketInteraction> GetTicketInteraction(long TicketId, DateTime CreatedOn);
-    Task<Ticket> Update(long TicketId, DateTime CreatedOn);
-    Task<ActionResult<Ticket>> Create(PostTicketRequest request, CancellationToken xl); 
+    Task<List<GetTicketResponse>> GetAll();
+    Task<List<GetTicketResponse>> GetByTicketId(long TicketId);
+    Task<GetTicketResponse> GetTicketWithInteractions(long TicketId, DateTime CreatedOn);
+    Task<PutTicketResponse> Update(PutTicketRequest request);
+    Task<ActionResult<PostTicketRequest>> Create(PostTicketRequest request, CancellationToken xl); 
 }

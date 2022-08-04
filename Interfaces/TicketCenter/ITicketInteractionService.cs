@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TicketCenter.Data.Models.TicketCenter;
-using TicketCenter.DataModels.TicketCenter;
+using TicketCenter.DataModels.TicketCenter.TicketInteraction;
 
 namespace TicketCenter.Interfaces.TicketCenter;
 

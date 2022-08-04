@@ -5,13 +5,13 @@ using TicketCenter.Data.Models.Extensions;
 
 namespace TicketCenter.Data.Models.ApplicationAdmin;
 
-[Table("Pages", Schema = "dbo")]
+[Table("Pages", Schema = "ApplicationAdmin")]
 public class Page : Logging{
 
     [Key]
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid PageId { get; set; } = Guid.NewGuid();
     
-    public Guid ApplicationId { get; set; }
+    public Guid AppId { get; set; }
 
     [Required]
     [MaxLength(77)]

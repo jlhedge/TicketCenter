@@ -1,23 +1,22 @@
-using TicketCenter.Data.Models;
 using TicketCenter.Data;
 using TicketCenter.Interfaces.ApplicationAdmin;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using TicketCenter.DataModels.ApplicationAdmin;
 using TicketCenter.Data.Models.ApplicationAdmin;
+using TicketCenter.DataModels.ApplicationAdmin.App;
+using TicketCenter.DataModels.ApplicationAdmin.Subsection;
 
 namespace TicketCenter.Services.ApplicationAdmin;
 
 public class SubSectionService : ISubsectionService
 {
-    TicketCenterDbContext _dbContext;
+    dbContext _dbContext;
 
-    public SubSectionService(TicketCenterDbContext dbContext)
+    public SubSectionService(dbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public Task<ActionResult<App>> Create(PostAppRequest request, CancellationToken xl)
+    public Task<ActionResult<App>> Create(PostSubsectionRequest request, CancellationToken xl)
     {
         throw new NotImplementedException();
     }

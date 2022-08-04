@@ -1,43 +1,41 @@
-using TicketCenter.Data.Models;
 using TicketCenter.Data;
 using TicketCenter.Interfaces.TicketCenter;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using TicketCenter.DataModels.TicketCenter;
 using TicketCenter.Data.Models.TicketCenter;
+using TicketCenter.DataModels.TicketCenter.Ticket;
 
 namespace TicketCenter.Services.TicketCenter;
 
 public class TicketService : ITicketService
 {
-    TicketCenterDbContext _dbContext;
+    dbContext _dbContext;
 
-    public TicketService(TicketCenterDbContext dbContext)
+    public TicketService(dbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public Task<ActionResult<Ticket>> Create(PostTicketRequest request, CancellationToken xl)
+    public Task<ActionResult<PostTicketResponse>> Create(PostTicketRequest request, CancellationToken xl)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<TicketInteraction>> GetAll()
+    public Task<List<GetTicketResponse>> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<TicketInteraction>> GetByTicketId(long TicketId)
+    public Task<List<GetTicketResponse>> GetByTicketId(long TicketId)
     {
         throw new NotImplementedException();
     }
 
-    public Task<TicketInteraction> GetTicketInteraction(long TicketId, DateTime CreatedOn)
+    public Task<GetTicketResponse> GetTicketWithInteractions(long TicketId, DateTime CreatedOn)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Ticket> Update(long TicketId, DateTime CreatedOn)
+    public Task<PutTicketResponse> Update(PutTicketRequest request)
     {
         throw new NotImplementedException();
     }

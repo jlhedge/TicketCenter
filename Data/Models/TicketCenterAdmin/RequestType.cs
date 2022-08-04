@@ -10,7 +10,7 @@ public class RequestType : Logging
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public long Id { get; set; }                                           
+    public long RequestTypeId { get; set; }                                           
     public Guid SubSectionId { get; set; }
     public string Description { get; set; } = default!;
 

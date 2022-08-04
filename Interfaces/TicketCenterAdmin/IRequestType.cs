@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TicketCenter.Data.Models.TicketCenterAdmin;
-using TicketCenter.DataModels.TicketCenterAdmin;
+using TicketCenter.DataModels.TicketCenterAdmin.RequestType;
 
 namespace TicketCenter.Interfaces.TicketCenterAdmin;
 

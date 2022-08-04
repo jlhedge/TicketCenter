@@ -4,11 +4,11 @@ using TicketCenter.Data.Models.Extensions;
 
 namespace TicketCenter.Data.Models.ApplicationAdmin;
 
-[Table("Sections", Schema = "dbo")]
+[Table("Sections", Schema = "ApplicationAdmin")]
 public class Section : Logging{
 
     [Key]
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid SectionId { get; set; } = Guid.NewGuid();
     
     public Guid PageId { get; set; }
 

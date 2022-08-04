@@ -1,18 +1,17 @@
-using TicketCenter.Data.Models;
 using TicketCenter.Data;
 using TicketCenter.Interfaces.ApplicationAdmin;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using TicketCenter.DataModels.ApplicationAdmin;
 using TicketCenter.Data.Models.ApplicationAdmin;
+using TicketCenter.DataModels.ApplicationAdmin.App;
 
 namespace TicketCenter.Services.ApplicationAdmin;
 
 public class ApplicationService : IApplicationService
 {
-    TicketCenterDbContext _dbContext;
+    dbContext _dbContext;
 
-    public ApplicationService(TicketCenterDbContext dbContext)
+    public ApplicationService(dbContext dbContext)
     {
         _dbContext = dbContext;
     }
@@ -33,10 +32,10 @@ public class ApplicationService : IApplicationService
         throw new NotImplementedException();
     }
 
-    async Task<ActionResult<AppResponse>> IApplicationService.Create(PostAppRequest request, CancellationToken xl)
+    async Task<ActionResult<App>> IApplicationService.Create(PostAppRequest request, CancellationToken xl)
     {
         App x = new App(){
-            Id = Guid.NewGuid(),
+            AppId = Guid.NewGuid(),
             ApplicationDescription = request.ApplicationDescription, 
             ApplicationName = request.ApplicationName, 
             CreatedByLogon = request.CreatedByLogon, 
@@ -50,19 +49,19 @@ public class ApplicationService : IApplicationService
         return x; 
     }
 
-    async Task<List<AppResponse>> IApplicationService.GetAll()
+    async Task<List<App>> IApplicationService.GetAll()
     {
         return await _dbContext.Applications
             .ToListAsync();
     }
 
-    async Task<AppResponse> IApplicationService.GetById(Guid AppId)
+    async Task<App> IApplicationService.GetById(Guid AppId)
     {
         return await _dbContext.Applications
             .FindAsync(AppId);
     }
 
-    Task<AppResponse> IApplicationService.Update(App request)
+    Task<App> IApplicationService.Update(App request)
     {
         throw new NotImplementedException();
     }

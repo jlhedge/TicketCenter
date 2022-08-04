@@ -1,23 +1,22 @@
-using TicketCenter.Data.Models;
 using TicketCenter.Data;
 using TicketCenter.Interfaces.ApplicationAdmin;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using TicketCenter.DataModels.ApplicationAdmin;
 using TicketCenter.Data.Models.ApplicationAdmin;
+using TicketCenter.DataModels.ApplicationAdmin.App;
+using TicketCenter.DataModels.ApplicationAdmin.Section;
 
 namespace TicketCenter.Services.ApplicationAdmin;
 
 public class SectionService : ISectionService
 {
-    TicketCenterDbContext _dbContext;
+    dbContext _dbContext;
 
-    public SectionService(TicketCenterDbContext dbContext)
+    public SectionService(dbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public Task<ActionResult<App>> Create(PostAppRequest request, CancellationToken xl)
+    public Task<ActionResult<App>> Create(PostSectionRequest request, CancellationToken xl)
     {
         throw new NotImplementedException();
     }
