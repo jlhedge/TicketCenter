@@ -9,13 +9,13 @@ public class Logging
     
     [Required]
     [MaxLength(250)]
-    public string CreatedByLogon { get; set; }
+    public Guid CreatedByUserId { get; set; }
 
     [Required]
     public DateTime CreatedOnUtc { get; set; }
 
     [MaxLength(250)]
-    public string? UpdatedByLogon { get; set; }
+    public Guid? UpdatedByUserId { get; set; }
 
     public DateTime? UpdatedOnUtc { get; set; }
 }

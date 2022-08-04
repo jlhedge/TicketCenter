@@ -1,7 +1,6 @@
 using TicketCenter.Data;
 using TicketCenter.Interfaces.TicketCenter;
 using Microsoft.AspNetCore.Mvc;
-using TicketCenter.Data.Models.TicketCenter;
 using TicketCenter.DataModels.TicketCenter.Ticket;
 
 namespace TicketCenter.Services.TicketCenter;

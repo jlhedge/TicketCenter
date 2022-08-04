@@ -10,5 +10,5 @@ public interface ITicketService
     Task<List<GetTicketResponse>> GetByTicketId(long TicketId);
     Task<GetTicketResponse> GetTicketWithInteractions(long TicketId, DateTime CreatedOn);
     Task<PutTicketResponse> Update(PutTicketRequest request);
-    Task<ActionResult<PostTicketRequest>> Create(PostTicketRequest request, CancellationToken xl); 
+    Task<ActionResult<PostTicketResponse>> Create(PostTicketRequest request, CancellationToken xl); 
 }

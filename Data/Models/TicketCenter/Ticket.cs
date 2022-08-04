@@ -11,9 +11,6 @@ public class Ticket : Logging
     [Key]
     public Guid TicketId { get; set; } = Guid.NewGuid();
     public long StatusTypeId { get; set; }
-    [EmailAddress]
-    public string Email { get; set; } = default!;
-
     public List<TicketInteraction> TicketInteractions { get; set; }
     public StatusType StatusType { get; set; }
 }

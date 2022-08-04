@@ -6,7 +6,7 @@ namespace TicketCenter.Interfaces.ApplicationAdmin;
 
 public interface IApplicationService
 {
-    Task<List<App>> GetAll();
+    Task<List<GetAppResponse>> GetAll();
     Task<App> GetById(Guid AppId);
     Task<App> Update(App request);
     Task<ActionResult<App>> Create(PostAppRequest request, CancellationToken xl); 

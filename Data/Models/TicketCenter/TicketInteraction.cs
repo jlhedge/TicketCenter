@@ -10,8 +10,6 @@ namespace TicketCenter.Data.Models.TicketCenter;
 public class TicketInteraction : Logging
 {
     public Guid TicketId { get; set; }
-    [EmailAddress]
-    public string? Email { get; set; } = default!;
     public long StatusTypeId { get; set; }
     public string? Notes { get; set; }
 

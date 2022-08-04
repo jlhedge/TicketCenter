@@ -16,25 +16,58 @@ public class ApplicationService : IApplicationService
         _dbContext = dbContext;
     }
 
-    public async Task<List<App>> GetAll()
+    public async Task<List<GetAppResponse>> GetAll()
     {
         return await _dbContext.Applications
+            .Select(i => new GetAppResponse()
+            {
+                ApplicationName = i.ApplicationName, 
+                ApplicationDescription = i.ApplicationDescription, 
+                AppId = i.AppId
+            })
             .ToListAsync();
     }
 
-    public async Task<App> GetById(Guid AppId)
+    public async Task<GetAppResponse> GetById(Guid AppId)
     {
-        return await _dbContext.Applications.FindAsync(AppId);
+        App app = await _dbContext.Applications
+            .FindAsync(AppId) ?? new App();
+            
+        return new GetAppResponse()
+        {
+            ApplicationName = app.ApplicationName, 
+            ApplicationDescription = app.ApplicationDescription, 
+            AppId = app.AppId
+        };
     }
 
-    public Task<App> Update(App request)
+    public async Task<PutAppResponse> Update(PutAppRequest request)
     {
-        throw new NotImplementedException();
+        App app = await _dbContext.Applications
+            .FindAsync(request.AppId) ?? new App();
+
+        app.ApplicationDescription = request.ApplicationDescription ?? app.ApplicationDescription;
+        app.ApplicationName = request.ApplicationName ?? app.ApplicationName;
+        app.IsEnabled = request.IsEnabled; 
+        // app.UpdatedByLogon = request.UpdatedByLogon;
+        app.UpdatedOnUtc = DateTime.UtcNow;
+        
+        await _dbContext.SaveChangesAsync();
+
+        PutAppResponse response = new PutAppResponse()
+        {
+            AppId = app.AppId, 
+            ApplicationName = app.ApplicationName, 
+            ApplicationDescription = app.ApplicationDescription
+        };
+
+        return response;
+
     }
 
-    async Task<ActionResult<App>> IApplicationService.Create(PostAppRequest request, CancellationToken xl)
+    public async Task<ActionResult<PostAppResponse>> Create(PostAppRequest request, CancellationToken xl)
     {
-        App x = new App(){
+        App app = new App(){
             AppId = Guid.NewGuid(),
             ApplicationDescription = request.ApplicationDescription, 
             ApplicationName = request.ApplicationName, 
@@ -42,27 +75,14 @@ public class ApplicationService : IApplicationService
             CreatedOnUtc = DateTime.UtcNow
         };
 
-        var y = _dbContext.Add(x);
-
+        _dbContext.Add(app);
         await _dbContext.SaveChangesAsync(cancellationToken: xl);
 
-        return x; 
-    }
-
-    async Task<List<App>> IApplicationService.GetAll()
-    {
-        return await _dbContext.Applications
-            .ToListAsync();
-    }
-
-    async Task<App> IApplicationService.GetById(Guid AppId)
-    {
-        return await _dbContext.Applications
-            .FindAsync(AppId);
-    }
-
-    Task<App> IApplicationService.Update(App request)
-    {
-        throw new NotImplementedException();
+        return new PostAppResponse()
+        {
+            AppId = app.AppId, 
+            ApplicationName = app.ApplicationName, 
+            ApplicationDescription = app.ApplicationDescription
+        }; 
     }
 }
